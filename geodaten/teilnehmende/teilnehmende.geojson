@@ -3,7 +3,18 @@
 "name": "teilnehmende",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::25832" } },
 "features": [
-{ "type": "Feature", "properties": { "fid": 1, "Adresse": "Paulstraße 6", "Info": "Tolle Dinge", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372451.531718793499749, 5670355.880695261992514 ] } },
-{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholler 111", "Info": "Noch mehr", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372525.19574305054266, 5670370.052591379731894 ] } }
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholler Straße 39", "Info": "Anziehsachen", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372885.472486075886991, 5670861.678341809660196 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Moritzstraße 21", "Info": "Kleidung", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372440.175847260397859, 5670639.803583888337016 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholl 24", "Info": "Spielzeug, Haushaltswaren, Kurioses", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372506.521616409765556, 5670299.670355395413935 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Moritzstraße 16 ", "Info": "Kinderkleidung, Spielzeug, Bücher", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372447.486316375201568, 5670669.510166002437472 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Tersteegenstraße 22", "Info": "Kinderkleidung, Spielzeug, Haushaltswaren, ", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372054.094348540878855, 5670262.696228954941034 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Moritzstraße 19", "Info": "Kinderkleidung,Spielzeug,Wolle, Strickwaren", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372455.874174490338191, 5670651.417370803654194 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholler Straße 102", "Info": "Alles rund ums Kind: von Kinderkleidung, Spielzeug, Kinderwagen etc.", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372476.220378924976103, 5670433.148475496098399 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Paulstraße 37", "Info": "Kleidung Bücher ", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372175.668938412040006, 5670395.377924688160419 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kochstraße, 10", "Info": "Bücher, Haushaltswaren, Elektrokabel, Bilderrahmen etc", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372622.066388268664014, 5670761.049284680746496 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Augustinusstr. 49", "Info": "Kleidung, Kindersachen, Bücher, Haushaltswaren", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372017.713885352364741, 5670183.300691007636487 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Paulstraße 6", "Info": "Haushaltsgegenstände, Musikinstrumente, Möbel, Babyartikel, Fitnessgeräte", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372453.995766663458198, 5670359.47192391846329 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholl 17 ", "Info": "Kleidung,Werkzeug,Spielzeug,Kindersachen,Bücher und alles was zum Trödeln dazu gehört ", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372513.227209044678602, 5670267.240106496028602 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholler Straße 33", "Info": "Kleidung, Spielzeug, Deko ", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372923.165141242207028, 5670888.359284868463874 ] } }
 ]
 }
