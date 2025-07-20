@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "teilnehmende",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::25832" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "Adresse": "Paulstraße 6", "Info": "Tolle Dinge", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372451.531718793499749, 5670355.880695261992514 ] } },
+{ "type": "Feature", "properties": { "fid": null, "Adresse": "Kremenholler 111", "Info": "Noch mehr", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372525.19574305054266, 5670370.052591379731894 ] } }
+]
+}
