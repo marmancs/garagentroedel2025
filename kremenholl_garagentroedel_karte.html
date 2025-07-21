@@ -109,12 +109,8 @@
           },
           onEachFeature: function (feature, layer) {
             let text = `<b>Adresse:</b> ${feature.properties.Adresse || 'unbekannt'}`;
-            if (feature.properties.Kategorie) {
-              text += `<br><b>Kategorie:</b> ${feature.properties.Kategorie}`;
-            }
-            if (feature.properties.Kategorie) {
-              text += `<br><i>Hausgemeinschaft</i>`;
-            }
+            text += `<br><b>Angebot(e):</b>`;
+            text += `<br><i> ${feature.properties.Info</i>`;
             layer.bindPopup(text);
           }
         }).addTo(map);
