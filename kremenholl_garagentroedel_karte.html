@@ -33,7 +33,7 @@
     var crs25832 = new L.Proj.CRS('EPSG:25832',
       '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs', {
         resolutions: [ 
-          5.291666666, 0.661458333
+          2.0, 4.0, 20.0, 40.0
         ],
         origin: [0, 0]
     });
@@ -42,7 +42,9 @@
     var map = L.map('map', {
       crs: crs25832,
       center: [51.172375, 7.174845],
-      zoom: 1
+      zoom: 2,
+      maxZoom: 3,
+      zoomSnap: 1
     });
 
     // Hintergrundlayer Stadtplan
