@@ -108,7 +108,7 @@
           onEachFeature: function (feature, layer) {
             let text = `<b>Adresse:</b> ${feature.properties.Adresse || 'unbekannt'}`;
             text += `<br><b>Angebot(e):</b>`;
-            text += `<br><i> ${feature.properties.Info</i>`;
+            text += `<br><i> ${feature.properties.Info}</i>`;
             layer.bindPopup(text);
           }
         }).addTo(map);
