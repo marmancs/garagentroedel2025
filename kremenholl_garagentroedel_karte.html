@@ -96,11 +96,9 @@
       .then(data => {
         L.Proj.geoJson(data, {
           pointToLayer: function (feature, latlng) {
-            let color = "red";
-            if (feature.properties.Kategorie === 1) color = "green";
             return L.circleMarker(latlng, {
               radius: 6,
-              fillColor: color,
+              fillColor: "green",
               color: "#000",
               weight: 1,
               opacity: 1,
@@ -121,8 +119,7 @@
       legend.onAdd = function (map) {
       var div = L.DomUtil.create('div', 'legend');
       div.innerHTML += '<b>Legende</b><br>';
-      div.innerHTML += '<i style="background:red;width:10px;height:10px;display:inline-block;border-radius:50%;"></i> Einzelstand<br>';
-      div.innerHTML += '<i style="background:green;width:10px;height:10px;display:inline-block;border-radius:50%;"></i> Hausgemeinschaft';
+      div.innerHTML += '<i style="background:green;width:10px;height:10px;display:inline-block;border-radius:50%;"></i> Trödelstandort';
       return div;
     };
     legend.addTo(map);
