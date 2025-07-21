@@ -121,8 +121,9 @@
       div.innerHTML += '<b>Legende</b><br>';
       div.innerHTML += '<i style="background:green;width:10px;height:10px;display:inline-block;border-radius:50%;"></i> Trödelstandort';
       return div;
-    };
+    };   
     legend.addTo(map);
+    L.control.scale({imperial: false}).addTo(map);
   </script>
 </body>
 </html>
