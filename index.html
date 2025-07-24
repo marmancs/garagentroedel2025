@@ -115,13 +115,14 @@
       .then(data => {
         L.Proj.geoJson(data, {
           pointToLayer: function (feature, latlng) {
-          const icon = L.divIcon({
-            html: '<div class="custom-marker"><i class="fas fa-warehouse"></i></div>',
-            className: '',         // wichtig, damit Leaflet kein Standard-Icon setzt
-            iconSize: [30, 30],
-            iconAnchor: [15, 15]
-          });
-          return L.marker(latlng, { icon: icon });
+            const icon = L.divIcon({
+              html: '<div class="custom-marker"><i class="fas fa-warehouse"></i></div>',
+              className: '',
+              iconSize: [30, 30],
+              iconAnchor: [15, 15]
+            });
+            return L.marker(latlng, { icon: icon });
+          },
           onEachFeature: function (feature, layer) {
             let text = `<b>Adresse:</b> ${feature.properties.Adresse || 'unbekannt'}`;
             text += `<br><b>Angebot(e):</b>`;
