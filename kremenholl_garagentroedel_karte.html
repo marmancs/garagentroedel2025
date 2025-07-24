@@ -124,6 +124,32 @@
     };   
     legend.addTo(map);
     L.control.scale({imperial: false}).addTo(map);
+    
+    // Standort-Schaltfläche hinzufügen
+    var locateBtn = L.control({position: 'topleft'});
+    locateBtn.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      var btn = L.DomUtil.create('a', '', div);
+      btn.href = '#';
+      btn.title = 'Standort anzeigen';
+      btn.innerHTML = '📍';
+      btn.style.padding = '4px';
+      btn.onclick = function (e) {
+        e.preventDefault();
+        map.locate({setView: true, maxZoom: 16});
+      };
+      return div;
+    };
+    locateBtn.addTo(map);
+
+    map.on('locationfound', function(e) {
+      L.marker(e.latlng).addTo(map)
+        .bindPopup("Ihr Standort:<br>" + e.latlng.lat.toFixed(5) + ", " + e.latlng.lng.toFixed(5)).openPopup();
+    });
+
+    map.on('locationerror', function(e) {
+      alert("Standort konnte nicht ermittelt werden.");
+    });
   </script>
 </body>
 </html>
