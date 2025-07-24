@@ -144,7 +144,6 @@
 
     map.on('locationfound', function(e) {
       L.marker(e.latlng).addTo(map)
-        .bindPopup("Ihr Standort:<br>" + e.latlng.lat.toFixed(5) + ", " + e.latlng.lng.toFixed(5)).openPopup();
     });
 
     map.on('locationerror', function(e) {
