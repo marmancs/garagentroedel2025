@@ -21,6 +21,10 @@
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0,0,0,0.3);
     }
+    .leaflet-marker-icon .fa {
+      font-size: 12px !important;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -100,7 +104,7 @@
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 icon: L.ExtraMarkers.icon({
-                  icon: 'fa-warehouse', // Garage-Symbol (z. B. FontAwesome 5 symbolisch)
+                  icon: 'fa-garage', // Garage-Symbol (z. B. FontAwesome 5 symbolisch)
                   markerColor: 'blue',
                   shape: 'circle',
                   prefix: 'fa'
