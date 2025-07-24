@@ -21,15 +21,21 @@
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0,0,0,0.3);
     }
-    .custom-div-icon {
-      background: transparent;
-      border: none;
+    .custom-marker {
+      background-color: #007bff;       /* blau */
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
       text-align: center;
-    }
-    .custom-div-icon i {
-      font-size: 18px;
-      color: #0044cc;
-      opacity: 0.75;
+      line-height: 30px;
+      opacity: 0.8;
+      border: 2px solid white;
+      box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    } 
+    .custom-marker i {
+      color: white;
+      font-size: 14px;
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -109,14 +115,13 @@
       .then(data => {
         L.Proj.geoJson(data, {
           pointToLayer: function (feature, latlng) {
-            const icon = L.divIcon({
-              html: '<i class="fas fa-warehouse"></i>',
-              className: 'custom-div-icon',
-              iconSize: [24, 24],
-              iconAnchor: [12, 12]
-            });
-            return L.marker(latlng, { icon: icon });
-          },
+          const icon = L.divIcon({
+            html: '<div class="custom-marker"><i class="fas fa-warehouse"></i></div>',
+            className: '',         // wichtig, damit Leaflet kein Standard-Icon setzt
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+          });
+          return L.marker(latlng, { icon: icon });
           onEachFeature: function (feature, layer) {
             let text = `<b>Adresse:</b> ${feature.properties.Adresse || 'unbekannt'}`;
             text += `<br><b>Angebot(e):</b>`;
