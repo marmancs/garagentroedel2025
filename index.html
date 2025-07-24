@@ -5,6 +5,7 @@
   <title>Garagentrödel Kremenholl</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-extra-markers/1.0.6/css/leaflet.extra-markers.min.css">
   <style>
     html, body, #map {
       height: 100%;
@@ -26,6 +27,7 @@
   <div id="map"></div>
   
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-extra-markers/1.0.6/js/leaflet.extra-markers.min.js"></script>
   <script src="https://unpkg.com/proj4/dist/proj4.js"></script>
   <script src="https://unpkg.com/proj4leaflet"></script>
   <script>
@@ -96,13 +98,12 @@
       .then(data => {
         L.Proj.geoJson(data, {
           pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, {
-              radius: 6,
-              fillColor: "green",
-              color: "#000",
-              weight: 1,
-              opacity: 1,
-              fillOpacity: 0.8
+            return L.marker(latlng, {
+                icon: L.ExtraMarkers.icon({
+                  icon: 'fa-warehouse', // Garage-Symbol (z. B. FontAwesome 5 symbolisch)
+                  markerColor: 'blue',
+                  shape: 'circle',
+                  prefix: 'fa'
             });
           },
           onEachFeature: function (feature, layer) {
@@ -119,7 +120,7 @@
       legend.onAdd = function (map) {
       var div = L.DomUtil.create('div', 'legend');
       div.innerHTML += '<b>Legende</b><br>';
-      div.innerHTML += '<i style="background:green;width:10px;height:10px;display:inline-block;border-radius:50%;"></i> Trödelstandort';
+      div.innerHTML += '<i class="fa fa-warehouse" style="color:blue;font-size:16px;"></i> Trödelstandort';
       return div;
     };   
     legend.addTo(map);
