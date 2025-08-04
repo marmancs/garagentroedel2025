@@ -61,7 +61,7 @@
     const map = L.map('map', {
       crs: crs25832,
       center: [51.172375, 7.174845],
-      zoom: 2,
+      zoom: 3,
       minZoom: 0,
       maxZoom: 5,
       zoomSnap: 1
@@ -130,12 +130,12 @@
       const legend = L.control({ position: 'bottomright' });
       legend.onAdd = function () {
         const div = L.DomUtil.create('div', 'legend');
-        div.innerHTML += '<b>Legende</b><br>';
+       // div.innerHTML += '<b>Legende</b><br>';
         div.innerHTML += `
           <span class="custom-marker" style="display:inline-block; vertical-align:middle;"></span>
-          Trödelstandort<br>
-          ${teilnehmerAnzahl} Teilnehmende<br>
-          <small><i>${standText.trim()}</i></small>
+          Trödelstandort<br><br>
+          <small><i>${teilnehmerAnzahl} Teilnehmende<br>
+          ${standText.trim()}</i></small>
         `;
         return div;
       };
