@@ -54,17 +54,17 @@
   <script>
     const crs25832 = new L.Proj.CRS('EPSG:25832',
       '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs', {
-        resolutions: [5.6, 2.8, 1.4, 0.28, 0.07],
+        resolutions: [5.6, 2.8, 1.4, 0.7, 0.28, 0.07],
         origin: [0, 0]
       });
 
     const map = L.map('map', {
       crs: crs25832,
       center: [51.172375, 7.174845],
-      zoom: 1,
+      zoom: 2,
       minZoom: 0,
-      maxZoom: 3,
-      zoomSnap: 1
+      maxZoom: 5,
+      zoomSnap: 0
     });
 
     const stadtplan = L.tileLayer.wms("https://geodaten.metropoleruhr.de/spw2", {
