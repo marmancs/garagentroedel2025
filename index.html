@@ -17,6 +17,7 @@
       line-height: 1.5em;
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      font-size: 14px;
     }
 
     .custom-marker {
@@ -24,22 +25,23 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      text-align: center;
-      line-height: 16px;
       opacity: 0.85;
       border: 1px solid white;
       box-shadow: 0 0 1px rgba(0,0,0,0.4);
+      position: relative;
     }
 
-    .custom-marker svg {
+    .custom-marker::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 3px;
       width: 10px;
       height: 10px;
-      vertical-align: middle;
-    }
-
-    .custom-marker svg path {
-      fill: white;
-      opacity: 0.9;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="white" d="M504 352H136.4c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0 96H136.1c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0-192H136.6c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm106.5-139L338.4 3.7a48.15 48.15 0 0 0-36.9 0L29.5 117C11.7 124.5 0 141.9 0 161.3V504c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V256c0-17.6 14.6-32 32.6-32h382.8c18 0 32.6 14.4 32.6 32v248c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V161.3c0-19.4-11.7-36.8-29.5-44.3z"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   </style>
 </head>
@@ -50,13 +52,13 @@
   <script src="https://unpkg.com/proj4/dist/proj4.js"></script>
   <script src="https://unpkg.com/proj4leaflet"></script>
   <script>
-    var crs25832 = new L.Proj.CRS('EPSG:25832',
+    const crs25832 = new L.Proj.CRS('EPSG:25832',
       '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs', {
         resolutions: [5.6, 2.8, 1.4, 0.28, 0.07],
         origin: [0, 0]
-    });
+      });
 
-    var map = L.map('map', {
+    const map = L.map('map', {
       crs: crs25832,
       center: [51.172375, 7.174845],
       zoom: 1,
@@ -65,7 +67,7 @@
       zoomSnap: 1
     });
 
-    var stadtplan = L.tileLayer.wms("https://geodaten.metropoleruhr.de/spw2", {
+    const stadtplan = L.tileLayer.wms("https://geodaten.metropoleruhr.de/spw2", {
       layers: 'spw2_graublau',
       format: 'image/png',
       crs: crs25832,
@@ -74,7 +76,7 @@
       attribution: "© Stadtkarte Remscheid, Regionalverband Ruhr"
     });
 
-    var luftbild = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dop", {
+    const luftbild = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dop", {
       layers: 'nw_dop_rgb',
       format: 'image/png',
       crs: crs25832,
@@ -83,7 +85,7 @@
       attribution: "&copy; Luftbilder Geobasis NRW"
     });
 
-    var baseMaps = {
+    const baseMaps = {
       "Stadtplan": stadtplan,
       "Luftbild": luftbild
     };
@@ -91,6 +93,7 @@
     stadtplan.addTo(map);
     L.control.layers(baseMaps).addTo(map);
 
+    // Stadtteilgrenze
     fetch('geodaten/stadtteil/kremenholl_geojson.geojson')
       .then(res => res.json())
       .then(data => {
@@ -99,20 +102,17 @@
         }).addTo(map);
       });
 
+    // Teilnehmende laden und anzeigen
     fetch('geodaten/teilnehmende/teilnehmende.geojson')
       .then(res => res.json())
       .then(data => {
-        teilnehmerAnzahl = data.features.length;
+        const teilnehmerAnzahl = data.features.length;
+        const stand = data.properties?.stand || 'unbekannt';
+
         L.Proj.geoJson(data, {
           pointToLayer: function (feature, latlng) {
             const icon = L.divIcon({
-              html: `
-                <div class="custom-marker">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                    <path d="M504 352H136.4c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0 96H136.1c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0-192H136.6c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm106.5-139L338.4 3.7a48.15 48.15 0 0 0-36.9 0L29.5 117C11.7 124.5 0 141.9 0 161.3V504c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V256c0-17.6 14.6-32 32.6-32h382.8c18 0 32.6 14.4 32.6 32v248c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V161.3c0-19.4-11.7-36.8-29.5-44.3z"/>
-                  </svg>
-                </div>
-              `,
+              html: `<div class="custom-marker"></div>`,
               className: '',
               iconSize: [16, 16],
               iconAnchor: [8, 8]
@@ -120,46 +120,36 @@
             return L.marker(latlng, { icon: icon });
           },
           onEachFeature: function (feature, layer) {
-            let text = `<b>Adresse:</b> ${feature.properties.Adresse || 'unbekannt'}`;
-            text += `<br><b>Angebot(e):</b><br><i>${feature.properties.Info}</i>`;
-            layer.bindPopup(text);
+            const adresse = feature.properties.Adresse || 'unbekannt';
+            const info = feature.properties.Info || '';
+            layer.bindPopup(`<b>Adresse:</b> ${adresse}<br><b>Angebot(e):</b><br><i>${info}</i>`);
           }
         }).addTo(map);
-        
-        // Legendenerstellung nach dem Laden der Teilnehmerdaten
-        var legend = L.control({ position: 'bottomright' });
+
+        // Legende anzeigen
+        const legend = L.control({ position: 'bottomright' });
         legend.onAdd = function () {
-          var div = L.DomUtil.create('div', 'legend');
+          const div = L.DomUtil.create('div', 'legend');
           div.innerHTML += '<b>Legende</b><br>';
           div.innerHTML += `
-            <div style="
-              display: inline-block;
-              background-color: #007bff;
-              width: 16px;
-              height: 16px;
-              border-radius: 50%;
-              text-align: center;
-              line-height: 16px;
-              margin-right: 6px;
-              vertical-align: middle;
-            ">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="10" height="10">
-                <path fill="white" d="M504 352H136.4c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0 96H136.1c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0-192H136.6c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm106.5-139L338.4 3.7a48.15 48.15 0 0 0-36.9 0L29.5 117C11.7 124.5 0 141.9 0 161.3V504c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V256c0-17.6 14.6-32 32.6-32h382.8c18 0 32.6 14.4 32.6 32v248c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V161.3c0-19.4-11.7-36.8-29.5-44.3z"/>
-              </svg>
-            </div> Trödelstandort<br>
-            <b>Teilnehmende:</b> ${teilnehmerAnzahl}
+            <span class="custom-marker" style="display:inline-block; vertical-align:middle;"></span>
+            Trödelstandort<br>
+            <b>Teilnehmende:</b> ${teilnehmerAnzahl}<br>
+            <small><i>Stand: ${stand}</i></small>
           `;
           return div;
         };
         legend.addTo(map);
       });
 
+    // Maßstabsleiste
     L.control.scale({ imperial: false }).addTo(map);
 
-    var locateBtn = L.control({ position: 'topleft' });
+    // Standortbutton
+    const locateBtn = L.control({ position: 'topleft' });
     locateBtn.onAdd = function () {
-      var div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-      var btn = L.DomUtil.create('a', '', div);
+      const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      const btn = L.DomUtil.create('a', '', div);
       btn.href = '#';
       btn.title = 'Standort anzeigen';
       btn.innerHTML = '📍';
@@ -172,6 +162,7 @@
     };
     locateBtn.addTo(map);
 
+    // Standortanzeige
     map.on('locationfound', function (e) {
       L.marker(e.latlng).addTo(map);
     });
