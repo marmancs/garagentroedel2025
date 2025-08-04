@@ -102,50 +102,50 @@
         }).addTo(map);
       });
 
-    // Teilnehmende laden und anzeigen
-    fetch('geodaten/teilnehmende/teilnehmende.geojson')
-      .then(res => res.json())
-      .then(data => {
-        const teilnehmerAnzahl = data.features.length;
-        const stand = data.properties?.stand || 'unbekannt';
+    // Teilnehmende + Stand einlesen
+    Promise.all([
+      fetch('geodaten/teilnehmende/teilnehmende.geojson').then(res => res.json()),
+      fetch('geodaten/teilnehmende/stand.txt').then(res => res.text())
+    ]).then(([geojsonData, standText]) => {
+      const teilnehmerAnzahl = geojsonData.features.length;
 
-        L.Proj.geoJson(data, {
-          pointToLayer: function (feature, latlng) {
-            const icon = L.divIcon({
-              html: `<div class="custom-marker"></div>`,
-              className: '',
-              iconSize: [16, 16],
-              iconAnchor: [8, 8]
-            });
-            return L.marker(latlng, { icon: icon });
-          },
-          onEachFeature: function (feature, layer) {
-            const adresse = feature.properties.Adresse || 'unbekannt';
-            const info = feature.properties.Info || '';
-            layer.bindPopup(`<b>Adresse:</b> ${adresse}<br><b>Angebot(e):</b><br><i>${info}</i>`);
-          }
-        }).addTo(map);
+      L.Proj.geoJson(geojsonData, {
+        pointToLayer: function (feature, latlng) {
+          const icon = L.divIcon({
+            html: `<div class="custom-marker"></div>`,
+            className: '',
+            iconSize: [16, 16],
+            iconAnchor: [8, 8]
+          });
+          return L.marker(latlng, { icon: icon });
+        },
+        onEachFeature: function (feature, layer) {
+          const adresse = feature.properties.Adresse || 'unbekannt';
+          const info = feature.properties.Info || '';
+          layer.bindPopup(`<b>Adresse:</b> ${adresse}<br><b>Angebot(e):</b><br><i>${info}</i>`);
+        }
+      }).addTo(map);
 
-        // Legende anzeigen
-        const legend = L.control({ position: 'bottomright' });
-        legend.onAdd = function () {
-          const div = L.DomUtil.create('div', 'legend');
-          div.innerHTML += '<b>Legende</b><br>';
-          div.innerHTML += `
-            <span class="custom-marker" style="display:inline-block; vertical-align:middle;"></span>
-            Trödelstandort<br>
-            <b>Teilnehmende:</b> ${teilnehmerAnzahl}<br>
-            <small><i>Stand: ${stand}</i></small>
-          `;
-          return div;
-        };
-        legend.addTo(map);
-      });
+      // Legende
+      const legend = L.control({ position: 'bottomright' });
+      legend.onAdd = function () {
+        const div = L.DomUtil.create('div', 'legend');
+        div.innerHTML += '<b>Legende</b><br>';
+        div.innerHTML += `
+          <span class="custom-marker" style="display:inline-block; vertical-align:middle;"></span>
+          Trödelstandort<br>
+          <b>Teilnehmende:</b> ${teilnehmerAnzahl}<br>
+          <small><i>${standText.trim()}</i></small>
+        `;
+        return div;
+      };
+      legend.addTo(map);
+    });
 
     // Maßstabsleiste
     L.control.scale({ imperial: false }).addTo(map);
 
-    // Standortbutton
+    // Standort-Button
     const locateBtn = L.control({ position: 'topleft' });
     locateBtn.onAdd = function () {
       const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
@@ -162,7 +162,6 @@
     };
     locateBtn.addTo(map);
 
-    // Standortanzeige
     map.on('locationfound', function (e) {
       L.marker(e.latlng).addTo(map);
     });
