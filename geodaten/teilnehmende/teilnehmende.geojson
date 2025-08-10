@@ -53,6 +53,6 @@
 { "type": "Feature", "properties": { "fid": "dWDLl6z", "Adresse": "Kremenholler Str. 41", "Info": "Deko", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372871.549554476107005, 5670853.095483297482133 ] } },
 { "type": "Feature", "properties": { "fid": "81p1Naz", "Adresse": "Rudolfstraße 13", "Info": "Haushaltswaren,  Deko,  Diverses", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372370.708795472455677, 5670447.953219848684967 ] } },
 { "type": "Feature", "properties": { "fid": "44N4PNb", "Adresse": "Augustinusstrasse 6", "Info": "Bücher Spielzeug", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372248.079882120946422, 5670186.11693365406245 ] } },
-{ "type": "Feature", "properties": { "fid": "VL1pkKg", "Adresse": "Kochstraße 7", "Info": "Bücher , Dekorationen, Kleidung, Spielzeug", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372635.75456528714858, 5670817.208018466830254 ] } }
+{ "type": "Feature", "properties": { "fid": "VL1pkKg", "Adresse": "Kochstraße 7", "Info": "Bücher, Dekorationen,  Kleidung,  Spielzeug", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372635.75456528714858, 5670817.208018466830254 ] } }
 ]
 }
