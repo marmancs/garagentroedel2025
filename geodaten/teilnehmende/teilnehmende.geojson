@@ -42,6 +42,6 @@
 { "type": "Feature", "properties": { "fid": "76LR70", "Adresse": "Kippdorfstr. 76", "Info": "Spielzeug, Deko, Kleidung, Schmuck, antikes", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372273.493482798046898, 5670754.27854214143008 ] } },
 { "type": "Feature", "properties": { "fid": "J5pO47", "Adresse": "Alexanderstraße 65a", "Info": "Glaswaren in Form von Vasen und Gläsern, Steingut und Keramik, Fahrräder und Kuriositäten", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372979.393976219231263, 5670937.400934632867575 ] } },
 { "type": "Feature", "properties": { "fid": "EyxA1l", "Adresse": "Kippdorfstraße 15 ", "Info": "Antikes, Haushaltswaren, Spielzeug, Deko, Kleidung", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372782.687461456633173, 5670927.186517111025751 ] } },
-{ "type": "Feature", "properties": { "fid": "lJrMzX", "Adresse": "Kremenholler Straße 37", "Info": "Kleidung, Bücher, Haushaltswaren, Häkelarbeiten\n", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372898.205152406648267, 5670869.743581457063556 ] } }
+{ "type": "Feature", "properties": { "fid": "lJrMzX", "Adresse": "Kremenholler Straße 37", "Info": "Kleidung, Bücher, Haushaltswaren, Häkelarbeiten", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372898.205152406648267, 5670869.743581457063556 ] } }
 ]
 }
