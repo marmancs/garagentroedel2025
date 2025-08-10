@@ -54,7 +54,11 @@
     .header-right a:hover {
       text-decoration: underline;
     }
-
+    /* mehr Abstand am unteren Rand für Controls */
+    .leaflet-bottom .leaflet-control {
+      margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+    }
+    
     /* Legende */
     .legend {
       background: white;
