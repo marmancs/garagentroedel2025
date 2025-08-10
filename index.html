@@ -58,7 +58,7 @@
     .leaflet-bottom .leaflet-control {
       margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
     }
-    
+
     /* Legende */
     .legend {
       background: white;
@@ -110,7 +110,12 @@
     /* Sehr kleine Bildschirme */
     @media (max-width: 480px) {
       #header h1 { font-size: 16px; }
-    }    
+    }   
+    @media (max-width: 480px) {
+      .leaflet-bottom.leaflet-right {
+        bottom: 8px; /* hebt Legenden-Kante etwas an */
+      }
+    } 
 
   </style>
 </head>
