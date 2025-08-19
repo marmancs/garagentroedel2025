@@ -58,7 +58,7 @@
 { "type": "Feature", "properties": { "fid": "PdBb5Ab", "Adresse": "Kremenholl 32", "Info": "Bücher, Haushaltsgegenstände, Lampen, Bilder, Stühle, Spiegel, …", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372426.666871145542245, 5670284.929151703603566 ] } },
 { "type": "Feature", "properties": { "fid": "PdBkZv0", "Adresse": "Kippdorfstr 57/59", "Info": "Haushaltswaren,Taschen, Dekoartikel", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372380.849909498472698, 5670789.848593019880354 ] } },
 { "type": "Feature", "properties": { "fid": "ODBK5g8", "Adresse": "Kochstraße 7", "Info": "Bücher, Kleidung, Spielzeug, Dekoration", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372635.57326403807383, 5670817.241936333477497 ] } },
-{ "type": "Feature", "properties": { "fid": "zxQkvBR", "Adresse": "Maxstr. 10", "Info": "DVD, Haushaltware,Spielzeug,Kleidung", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372517.185490148782264, 5670783.023469943553209 ] } }
-{ "type": "Feature", "properties": { "fid": "gDQaMvl", "Adresse": "Paulstraße 7", "Info": "Kleidung, Spielzeug, Sportgeräte, Haushaltswaren", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372446.980625769647304, 5670343.174562677741051 ] } },
+{ "type": "Feature", "properties": { "fid": "zxQkvBR", "Adresse": "Maxstr. 10", "Info": "DVD, Haushaltware,Spielzeug,Kleidung", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372517.185490148782264, 5670783.023469943553209 ] } },
+{ "type": "Feature", "properties": { "fid": "gDQaMvl", "Adresse": "Paulstraße 7", "Info": "Kleidung, Spielzeug, Sportgeräte, Haushaltswaren", "Kategorie": 1 }, "geometry": { "type": "Point", "coordinates": [ 372446.980625769647304, 5670343.174562677741051 ] } }
 ]
 }
