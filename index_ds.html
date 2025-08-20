@@ -151,6 +151,10 @@
       return addr.replace(/\s+\d.*$/, '').trim();
     }
 
+
+
+
+
     // Toggle-Button (🔒/🔓)
     const privacyCtrl = L.control({ position: 'topleft' });
     privacyCtrl.onAdd = function () {
@@ -198,22 +202,22 @@
         },
         onEachFeature: function (feature, layer) {
           const rawAdresse = feature.properties.Adresse || 'unbekannt';
-          const info = feature.properties.Info || '';
+          const rawinfo = feature.properties.Info || '';
 
-          let adresseHTML;
-          if (privacyOff) {
-            // Vollanzeige (nach Event oder per Umschalter)
-            adresseHTML = `<b>Adresse:</b> ${rawAdresse}`;
-          } else {
-            // Geschützte Anzeige: Straße ohne Hausnummer
-            const masked = maskAddress(rawAdresse);
-            adresseHTML = `<b>Adresse:</b> ${masked} <small>(Details am Veranstaltungstag)</small>`;
-          }
+          let adresseHTML, infoHTML;
 
-          layer.bindPopup(`
-            ${adresseHTML}<br>
-            <b>Angebot(e):</b><br><i>${info}</i>
-          `);
+        if (privacyOff) {
+        // Vollansicht (🔓 oder ab EVENT_DATE)
+        adresseHTML = `<b>Adresse:</b> ${rawAdresse}`;
+        infoHTML    = `<b>Angebot(e):</b><br><i>${rawInfo}</i>`;
+        } else {
+        // Geschützte Ansicht (🔒)
+        const maskedAddr = maskAddress(rawAdresse);
+        adresseHTML = `<b>Adresse:</b> ${maskedAddr} <small>(Details am Veranstaltungstag)</small>`;
+        infoHTML    = `<b>Angebot(e):</b><br><i>[Details am Veranstaltungstag]</i>`;
+        }
+
+        layer.bindPopup(`${adresseHTML}<br>${infoHTML}`);
         }
       }).addTo(map);
 
